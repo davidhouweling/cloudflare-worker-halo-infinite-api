@@ -11,8 +11,16 @@
  * Learn more at https://developers.cloudflare.com/workers/
  */
 
+import { HaloInfiniteClient } from 'halo-infinite-api';
+import { XstsTokenProvider } from './token-provider';
+
 export default {
 	async fetch(request, env, ctx): Promise<Response> {
-		return new Response('Hello World!');
+		const tokenProvider = new XstsTokenProvider(env);
+		const client = new HaloInfiniteClient(tokenProvider);
+
+		const user = await client.getUser('soundmanD');
+
+		return new Response(`Hello ${user.xuid}!`);
 	},
 } satisfies ExportedHandler<Env>;

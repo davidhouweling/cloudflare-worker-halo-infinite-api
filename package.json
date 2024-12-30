@@ -15,5 +15,9 @@
     "typescript": "^5.5.2",
     "vitest": "2.1.8",
     "wrangler": "^3.60.3"
+  },
+  "dependencies": {
+    "@xboxreplay/xboxlive-auth": "^4.1.0",
+    "halo-infinite-api": "^9.1.1"
   }
 }
